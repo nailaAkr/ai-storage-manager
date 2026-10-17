@@ -1,0 +1,203 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Photos + AI Storage Assistant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+    <div class="brand">
+        <span class="photos-logo">
+            <span class="blue"></span>
+            <span class="red"></span>
+            <span class="yellow"></span>
+            <span class="green"></span>
+        </span>
+        <span>Photos</span>
+    </div>
+
+    <div class="search-box">
+        <span>⌕</span>
+        <input id="searchInput" placeholder="Search your photos">
+    </div>
+
+    <button class="icon-button" id="helpBtn" title="Help">?</button>
+<button class="icon-button" id="settingsBtn" title="Settings">⚙</button>
+<div class="avatar" id="profileBtn" title="Profile">N</div>
+</header>
+
+<section class="storage-warning">
+    <div class="warning-icon">!</div>
+    <div class="warning-text">
+        <strong>Your Google storage is almost full</strong>
+        <p>14.2 GB of 15 GB used · Make room for new memories.</p>
+    </div>
+    <button id="plansBtn" class="outline-button">Unlock Storage Discount</button>
+    <button id="aiBtn" class="blue-button">✨ Manage with AI</button>
+</section>
+
+<div class="app-layout">
+    <aside class="sidebar">
+        <button class="side-item active" data-filter="all">
+            <span>▦</span> Photos
+        </button>
+        <button class="side-item" data-filter="favorites">
+            <span>♡</span> Favorites
+        </button>
+        <button class="side-item" data-filter="travel">
+            <span>🌍</span> Travel
+        </button>
+        <button class="side-item" data-filter="people">
+            <span>♧</span> People
+        </button>
+        <button class="side-item" data-filter="screenshots">
+            <span>▣</span> Screenshots
+        </button>
+
+        <div class="sidebar-divider"></div>
+
+        <button class="side-item" id="albumsBtn">
+            <span>▤</span> AI suggested albums
+        </button>
+
+        <div class="storage-mini">
+            <div class="storage-title">
+                <span>☁</span>
+                <strong>Storage</strong>
+            </div>
+            <div class="storage-progress"><div></div></div>
+            <p>14.2 GB of 15 GB used</p>
+            <button id="sidebarPlans">Manage storage</button>
+        </div>
+
+        <div class="sidebar-note">Your memories. Your control.</div>
+    </aside>
+
+    <main class="main-content">
+        <div class="page-heading">
+            <div>
+                <h1 id="pageTitle">Photos</h1>
+                <p id="pageSubtitle">Your memories, all in one place</p>
+            </div>
+            <button class="select-button" id="selectAllBtn">Select all</button>
+        </div>
+
+        <section class="ai-banner">
+            <div class="ai-sparkle">✦</div>
+            <div class="ai-banner-text">
+                <strong>Your AI storage assistant</strong>
+                <p>Organize memories, review photos and decide what to move.</p>
+            </div>
+            <button id="organizeBtn">Organize photos →</button>
+        </section>
+
+        <div class="date-heading">October 2026</div>
+
+<div class="photo-grid" id="photoGrid">
+
+    <div class="photo-card">
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=500" alt="Mountain landscape">
+        <div class="photo-info">
+            <strong>Mountain Escape</strong>
+            <span>4.2 MB · Travel</span>
+        </div>
+    </div>
+
+    <div class="photo-card">
+        <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=500" alt="Lake and mountains">
+        <div class="photo-info">
+            <strong>Peaceful Lake</strong>
+            <span>3.8 MB · Travel</span>
+        </div>
+    </div>
+
+    <div class="photo-card">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=500" alt="Nature landscape">
+        <div class="photo-info">
+            <strong>Nature Walk</strong>
+            <span>5.1 MB · Nature</span>
+        </div>
+    </div>
+
+    <div class="photo-card">
+        <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=500" alt="Ocean waves">
+        <div class="photo-info">
+            <strong>Ocean Memories</strong>
+            <span>2.7 MB · Travel</span>
+        </div>
+    </div>
+
+    <div class="photo-card">
+        <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=500" alt="Flowers">
+        <div class="photo-info">
+            <strong>Spring Flowers</strong>
+            <span>3.4 MB · Nature</span>
+        </div>
+    </div>
+
+    <div class="photo-card">
+        <img src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?w=500" alt="Sunrise landscape">
+        <div class="photo-info">
+            <strong>Golden Sunrise</strong>
+            <span>4.6 MB · Nature</span>
+        </div>
+    </div>
+
+</div>
+
+        <div class="selection-bar" id="selectionBar">
+            <span id="selectedCount">0 selected</span>
+            <button id="reviewBtn" class="blue-button">Review & transfer</button>
+            <button id="clearBtn" class="outline-button">Clear selection</button>
+        </div>
+    </main>
+</div>
+
+<!-- Existing modal -->
+<div class="modal hidden" id="modal">
+    <div class="modal-card">
+        <button class="close-button" id="closeModal">✕</button>
+        <div id="modalContent"></div>
+    </div>
+</div>
+
+<!-- AI chat window -->
+<div class="ai-chat-window hidden" id="aiChatWindow">
+    <div class="ai-chat-header">
+        <div>
+            <strong>✨ AI Photo Assistant</strong>
+            <p>Ask me about organizing and storage</p>
+        </div>
+        <button id="closeChatBtn" type="button">✕</button>
+    </div>
+
+    <div class="ai-chat-messages" id="chatMessages" aria-live="polite">
+        <div class="ai-message">
+            Hi! 👋 I'm your AI photo assistant.
+            Ask me how to organize photos or free up storage.
+        </div>
+    </div>
+
+    <form id="chatForm" class="ai-chat-input">
+        <input
+            id="userMessage"
+            type="text"
+            placeholder="Ask me anything..."
+            autocomplete="off"
+            required
+        >
+        <button id="sendChatBtn" type="submit">Send</button>
+    </form>
+</div>
+
+<footer>
+    Independent Google Photos-inspired prototype · Not affiliated with Google
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
